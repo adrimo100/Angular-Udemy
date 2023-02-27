@@ -1,0 +1,21 @@
+<!--String Interpolation. Con {{}} podemos escribir código TS en su interior que debe devolver un string-->
+<!--Property Binding con [property] = "variable". Vinculamos dinámicamente el valor de la propiedad html a una variable.-->
+<!--Event Binding con (tipo_de_evento) = "Código que se ejecuta". En este tipo de Binding, $event serán los datos emitidos por el evento (objeto de tipo evento)-->
+<!--Two-Way-Binding con [(value)]. Para Two-Way-Binding hace falta habilitar ngModel añadiendo FormsMudle al array imports[] de AppModule-->
+<label>Server Name</label>
+<!--<input type="text" class="form-control w-25" (input)="onUpdateServerName($event)">-->
+<input type="text" class="form-control w-25" [(ngModel)]="serverName">
+<!--<p>{{serverName}}</p>-->
+<button [disabled]="!allowNewServer" (click)="onCreateServer()" class="btn btn-primary mb-2 mt-1">Add Server</button>
+<!--<p>{{serverCreationStatus}}</p>-->
+<!--*ngIf es una directiva estructual porque cambia la estructura del dom. Por ser estructurtal lleva * antes. Añade el elemento o no dependiendo de la condición dada que devuelva true o false.-->
+<p *ngIf="serverCreated; else noServer">{{serverCreationStatus}}</p> <!--Añadimo else para crear la opción contraria y apuntamos al marcador #noServer-->
+<!--Esta opción se suele usar menos. Sería más habitual haber usado *ngIf="!serverCreated" en el nuevo <p>-->
+<ng-template #noServer> <!--ng-template es una directiva de envio que sirve para marcas tags del DOM. #name es un marcador-->
+    <p>
+        No server was created!
+    </p>
+</ng-template> 
+<!--ngFor es una directiva estructural, por eso lleva el * delante. Es estructural porque modifica la estructura del DOM. Funciona como un for dado un array-->
+<!-- "bucle_for; let index = index" para obtener el índice del elemento en *ngFor-->
+<app-server *ngFor="let server of servers; let index = index" [ngClass]="{par: index % 2 == 0, impar: index % 2 != 0}"></app-server>

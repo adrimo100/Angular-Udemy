@@ -1,0 +1,5 @@
+<!--String Interpolation. Con {{}} podemos escribir código TS en su interior que debe devolver un string-->
+<!--ngStyle es una directiva para cambiar el estilo de un componente. Los [] no son parte de la directiva, es property binding para darle valor a la propiedad.
+Vincualamos a una propiedad de la directiva.-->
+<!--ngclass nos permite añadir o eliminar dinámicamente clases del componente. {nombre_clase: condición para ser añadida}-->
+<p [ngStyle]='{backgroundColor: getColor()}' [ngClass]="{online: serverStatus === 'online'}">{{"Server"}} with ID {{serverId}} is {{getServerStatus()}}</p>
