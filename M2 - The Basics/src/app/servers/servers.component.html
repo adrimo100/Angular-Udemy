@@ -19,3 +19,6 @@
 <!--ngFor es una directiva estructural, por eso lleva el * delante. Es estructural porque modifica la estructura del DOM. Funciona como un for dado un array-->
 <!-- "bucle_for; let index = index" para obtener el índice del elemento en *ngFor-->
 <app-server *ngFor="let server of servers; let index = index" [ngClass]="{par: index % 2 == 0, impar: index % 2 != 0}"></app-server>
+
+<!--*ngIf, *ngFor, *ngSwitch, *ngPlural, ... son directivas estructurales y por eso empiezan con *. -->
+<!--ngModel, ngClass y ngStyle son directivas de Atributo, y se configuran igual que un atributo html a la hora de darles valores.-->
