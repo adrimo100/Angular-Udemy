@@ -1,11 +1,7 @@
 <div class="panel panel-default">
   <div class="panel-heading">{{ element.name }}</div>
   <div class="panel-body">
-    <p>
-      <strong *ngIf="element.type === 'server'" style="color: red">{{
-        element.content
-      }}</strong>
-      <em *ngIf="element.type === 'blueprint'" style="color: blue">{{ element.content }}</em>
-    </p>
+    <!--Con esta directiva, le indicamos a angular que debe rendizar aquí cualquier contenido que tenga dentro el componente cuando se llama desde el comp. padre-->
+    <ng-content></ng-content>
   </div>
 </div>

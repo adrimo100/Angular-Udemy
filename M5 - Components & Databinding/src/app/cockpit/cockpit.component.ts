@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-cockpit',
@@ -12,15 +12,16 @@ export class CockpitComponent implements OnInit {
   Si le pasamos el alias, este deberá ser usado por el padre obligatoriamente para escuchar el evento.*/
   @Output() serverCreated = new EventEmitter<{serverName: string, serverContent: string}>;
   @Output("bpCreated") blueprintCreated = new EventEmitter<{serverName: string, serverContent: string}>;
-  newServerName = "";
-  newServerContent="";
+  //Con el decorador @ViewChield(Local_Reference, {static: true/false}) podemos tener acceso a un objeto de tipo ElementRef, que incluye al tag html que tenía el Local Reference.
+  //ElementRef tiene un atributo llamado nativeElement que almacena a la etiqueta html original junto a sus propiedades.
+  @ViewChild("serverContentInput", {static: true}) serverContentInput: ElementRef; 
 
-  onAddServer(){
-    this.serverCreated.emit({serverName: this.newServerName, serverContent:this.newServerContent}); //Emitimos el evento y le pasamos los datos necesarios.
+  onAddServer(nameInput: string){
+    this.serverCreated.emit({serverName: nameInput, serverContent:this.serverContentInput.nativeElement.value}); //Emitimos el evento y le pasamos los datos necesarios.
   }
 
-  onAddBlueprint(){
-    this.blueprintCreated.emit({serverName: this.newServerName, serverContent:this.newServerContent});
+  onAddBlueprint(nameInput: string){
+    this.blueprintCreated.emit({serverName: nameInput, serverContent:this.serverContentInput.nativeElement.value});
   }
 
   constructor() { }
