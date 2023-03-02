@@ -1,0 +1,25 @@
+ HOOKS de Angular:
+    -ngOnInit: Se ejecuta una vez el componente se ha instanciado, justo después del constructor.
+    -ngOnChanges: Se ejecuta al instanciar el componente y cada vez que un @Input cambia su valor. La primera vez se ejecuta antes que ngOnInit.
+    Puede recibir como parámetro un objeto que contiene información sobre -los cambios.
+    -ngDoCheck: Se ejecuta cada vez que se ejecute la detección de cambios, aunque no haya cambiado nada.
+    -ngAfterContentInit: Se ejecuta cuando <ng-content> ha sido inicializado.
+    -ngAfterContentChecked: Se ejecuta cada vez que el contenido ha sido chequeado.
+    -ngAfterViewInit: Se llama cuando la vista de este componente (y la de sus hijos) ha terminado de inicializarse.
+    -ngAfterViewChecked: Se ejecuta cada vez que la vista (y la de sus hijos) ha sido comprobada.
+    -ngOnDestroy: Se ejecuta justo antes de que se elimine el componente.
+
+DECORADORES:
+    - Con el decorador @Input(alias_opcional), hacemos que los componentes padre (los que usan a este) puedan acceder a un atributo/método.
+    A este decorador, se le puede pasar opcionalmente un string que tendrá que ser usado como alias si se le pasa este string.
+
+    - Con new EventEmitter<datos_retornados> convertimos un atributo en un evento creando un nuevo objeto de tipo eventEmitter.
+    Esto nos permite emitir nuestro propios eventos.
+    Para que se pueda escuchar desde otro componente, usamos el decorador @Output(alias_opcional).
+    Si le pasamos el alias, este deberá ser usado por el padre obligatoriamente para escuchar el evento.
+
+    -Con el decorador @ViewChield(Local_Reference, {static: true/false}) podemos tener acceso a un objeto de tipo ElementRef, que incluye al tag html que tenía el Local Reference.
+    ElementRef tiene un atributo llamado nativeElement que almacena a la etiqueta html original junto a sus propiedades.
+
+REFERENCIA LOCAL:
+    Referencia local con #string. Mantiene una referencia a este elemento y a sus propiedades. Se puede usar en cualquier parte del archivo .html

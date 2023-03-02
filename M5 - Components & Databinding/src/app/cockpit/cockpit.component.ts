@@ -26,6 +26,6 @@ export class CockpitComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { //Es un hook del ciclo de vida del componente. Se ejecuta una vez el componente se ha instanciado, justo después del constructor.
   }
 }
