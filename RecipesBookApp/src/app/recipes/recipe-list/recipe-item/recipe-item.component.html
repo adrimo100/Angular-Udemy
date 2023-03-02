@@ -1,1 +1,9 @@
-<p>recipe-item works!</p>
+<a href="#" class="list-group-item clearfix" (click)="onSelected()">
+    <div class="pull-left">
+        <h4 class="list-group-heading">{{name}}</h4>
+        <p class="list-group-item-text">{{description}}</p>
+    </div>
+    <span class="pull-right">
+        <img class="img-responsive" alt="{{name}}" style="max-height: 50px;" [src]="imagePath">
+    </span>
+</a>
