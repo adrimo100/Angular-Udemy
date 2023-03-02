@@ -15,7 +15,7 @@ DECORADORES:
 
     - Con new EventEmitter<datos_retornados> convertimos un atributo en un evento creando un nuevo objeto de tipo eventEmitter.
     Esto nos permite emitir nuestro propios eventos.
-    Para que se pueda escuchar desde otro componente, usamos el decorador @Output(alias_opcional).
+    Para que se pueda escuchar también desde el componente padre, usamos el decorador @Output(alias_opcional).
     Si le pasamos el alias, este deberá ser usado por el padre obligatoriamente para escuchar el evento.
 
     -Con el decorador @ViewChield(Local_Reference, {static: true/false}) podemos tener acceso a un objeto de tipo ElementRef, que incluye al tag html que tenía el Local Reference.
