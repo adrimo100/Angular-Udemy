@@ -12,6 +12,8 @@ export class ShoppingEditComponent {
   @Output() ingredientSubmited = new EventEmitter<Ingredient>();
 
   onSubmitIngredient(){
-    this.ingredientSubmited.emit(new Ingredient(this.nameInput.nativeElement.value, this.amountInput.nativeElement.value));
+    const ingName = this.nameInput.nativeElement.value;
+    const ingAmount = this.amountInput.nativeElement.value;
+    this.ingredientSubmited.emit(new Ingredient(ingName, ingAmount));
   }
 }
