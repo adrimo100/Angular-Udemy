@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <button
+        class="btn btn-primary"
+        (click)="onlyOdd = !onlyOdd">Only show odd numbers</button>
+      <br><br>
+      <ul class="list-group">
+        <div *appUnless="onlyOdd">
+          <li
+          class="list-group-item" *ngFor="let odd of oddNumbers" [ngClass]="{odd: odd % 2 !== 0}" [ngStyle]="{backgroundColor: odd % 2 !== 0 ? 'red' : 'blue'}">
+            {{odd}}
+          </li>
+        </div>
+        <div *appUnless="!onlyOdd">
+          <li
+        class="list-group-item" *ngFor="let even of evenNumbers" [ngClass]="{even: even % 2 === 0}" appBasicHighLight> <!--Usamos la directivas custom appBasicHighLight-->
+          {{even}}
+        </li>
+        </div>
+
+      </ul>
+      
+      <!--Utilizamos appBetterHighlight como nombre de directiva y alias del input-->
+      <p [appBetterHighlight]="'red'" [defaultColor]="'yellow'">Usamos la directiva appBetterHighlight</p>
+      <div [ngSwitch]="value"> <!--Ejemplo de ngSwitch-->
+        <p *ngSwitchCase="5">Value is 5</p>
+        <p *ngSwitchCase="10">Value is 10</p>
+        <p *ngSwitchCase="100">Value is 100</p>
+        <p *ngSwitchDefault>Value is default</p>
+      </div> 
+      <ng-template [ngIf]="onlyOdd"> <!--ng-template no se renderiza, y se usa para contenido cuyo renderizado es condicional. Este es el equivalente a *ngIf.-->
+        <p>Only odd</p>.
+      </ng-template>
+    </div>
+  </div>
+</div>
